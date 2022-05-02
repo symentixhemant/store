@@ -42,7 +42,7 @@ class store_controller extends Controller
         $p->Pcode=$request->get('p_code');
         $p->Pprice=$request->get('p_price');
         $p->save();
-        return redirect("/");
+        return redirect("/start");
     }
 
     /**
@@ -55,11 +55,7 @@ class store_controller extends Controller
     {
         $id=request('id');
         $p=product::find($id);
-        
-            return view('result',compact('p'));
-        
-        
-        
+        return view('view_result',compact('p'));        
     }
 
     /**
@@ -68,9 +64,9 @@ class store_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit()
     {
-        //
+        
         $id=request('id');
         $p=product::find($id);
         return view('update_result',compact('p'));
@@ -83,15 +79,15 @@ class store_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update()
     {
-        //
-        // $p=product::find($request->get('$p->id'));
+        $id=request('p_id');
+        $p=product::find($id);
         // $p->Pname=$request->get('p_name');
         // $p->Pcode=$request->get('p_code');
         // $p->Pprice=$request->get('p_price');
         // $p->save();
-        // return redirect("/");
+        return view("abc",compact('p'));
     }
 
     /**
@@ -100,8 +96,15 @@ class store_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+   
+    public function destroy()
     {
         //
+        $id=request('id');
+        // echo $id;
+        $p=product::find($id);
+        // echo $p;
+        $p->delete();
+        return redirect('/start');
     }
 }

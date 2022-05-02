@@ -12,21 +12,34 @@ use App\Http\Controllers\store_controller;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/',function(){
+    return view('verify_page');
+});
 
-Route::get('/',[store_controller::class,'index'])->name('insertform');
-Route::get('insertform',[store_controller::class,'store'])->name('storedb');
+//----------------Home page----------------
+Route::get('/start',function(){
+    return view('index');
+})->name('home')->middleware('verification');
 
+//----------------code for insertion in DB----------------
+Route::get('/insert',[store_controller::class,'index'])->name('insert');
+Route::get('insert/result',[store_controller::class,'store'])->name('storedb');
+
+//----------------code for viewing in DB----------------
 Route::get('/filter_view',function(){
     return view('view');
-})->name('viewbyid');
-Route::get('/filter_view/result','store_controller@show')->name('A');
+})->name('view');
+Route::get('/filter_view/result','store_controller@show')->name('view_result');
 
+//----------------code for updation in DB----------------
 Route::get('/update',function(){
     return view('update');
-});
-Route::get('/update/change','store_controller@edit')->name('B');
+})->name('update');
+Route::get('/update/change','store_controller@edit')->name('update_result');
+Route::get('update/change/1','store_controller@update');
 
-
-// Route::get('/s',function(){
-//     return view('view');
-// })->name('A');
+//----------------code for deletion in DB----------------
+Route::get('/delete',function(){
+    return view('delete');
+})->name('delete');
+Route::get('/delete/result',[store_controller::class,'destroy'])->name('delete_result');

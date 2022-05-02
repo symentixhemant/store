@@ -1,5 +1,5 @@
 Enter ID:
-<form method='get' action='/update/change'>
+<form method='get' action='/delete/result'>
     @csrf
     <input type='text' name='id'>
     <br>

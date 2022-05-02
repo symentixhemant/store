@@ -14,4 +14,6 @@
         <td style='border:1px solid;'>{{$p->Pprice}}</td>
     </tr>
 </table>
+<br><br><br><br>    <a href='{{route("home")}}'>HOME</a>
+
 </center>

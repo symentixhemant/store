@@ -1,5 +1,8 @@
-<form method='get' action='#'>
+<form method='get' action='update/change/1'>
     @csrf
+    Product id<br>
+    <input type='text' name='p_id' value="{{$p->id}}">
+    <br>
     Product Name<br>
     <input type='text' name='p_name' value="{{$p->Pname}}">
     <br>
