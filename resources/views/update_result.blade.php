@@ -1,4 +1,4 @@
-<form method='get' action='update/change/1'>
+<form method='post' action='/update/change/1'>
     @csrf
     Product id<br>
     <input type='text' name='p_id' value="{{$p->id}}">

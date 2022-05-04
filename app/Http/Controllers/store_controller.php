@@ -15,7 +15,7 @@ class store_controller extends Controller
     public function index()
     {
         //
-        return view('insert');
+        //return view('insert');
     }
 
     /**
@@ -79,15 +79,18 @@ class store_controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $request)
     {
         $id=request('p_id');
+        // echo $id;
         $p=product::find($id);
-        // $p->Pname=$request->get('p_name');
-        // $p->Pcode=$request->get('p_code');
-        // $p->Pprice=$request->get('p_price');
-        // $p->save();
-        return view("abc",compact('p'));
+        // echo $p;
+        $p->Pname=$request->get('p_name');
+        $p->Pcode=$request->get('p_code');
+        $p->Pprice=$request->get('p_price');
+        $p->save();
+        return redirect("/start");
+
     }
 
     /**
